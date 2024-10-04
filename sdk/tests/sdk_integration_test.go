@@ -19,8 +19,7 @@ func TestSDKFile(t *testing.T) {
 	testHTML := "<h1>Test File PDF</h1>"
 
 	opts := sdk.GenerationOptions{
-		HTML:   &testHTML,
-		Bucket: "", // No bucket means the PDF will be returned directly
+		HTML: &testHTML,
 	}
 
 	output, err := sdkInstance.GeneratePDF(opts)
