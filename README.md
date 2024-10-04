@@ -1,6 +1,12 @@
 # PDFify
 
-A light-weight, fast, and memory-efficient HTML to PDF converter.
+A light-weight, fast, and memory-efficient HTML to PDF microservice.
+
+Due to it being purpose-built as a microservice, you can run it easily with Docker and AWS Fargate (for example).
+
+There is a working SDK for Golang contained here which you can `go get` and use. There's also a general API that can be used by other programming languages, open a PR with an edit to this page if you make your own SDK :)
+
+(please note, as of now, this is meant to be run inside of a private VPC, there is no auth!)
 
 ## Get Started:
 
