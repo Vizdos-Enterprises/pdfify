@@ -1,0 +1,3 @@
+sdk/tests/outputs/*
+!sdk/tests/outputs/.gitkeep
+.env

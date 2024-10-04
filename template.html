@@ -1,0 +1,229 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                font-family: "Inter", sans-serif;
+            }
+            body {
+                padding: 4rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                min-height: calc(100vh - 8rem);
+            }
+
+            header {
+                display: grid;
+                grid-template-columns: 96px 1fr;
+                align-items: center;
+                grid-gap: 1rem;
+            }
+
+            header #title {
+                font-size: 1.15rem;
+                font-weight: 500;
+            }
+
+            header img {
+                height: min-content;
+            }
+
+            .center {
+                text-align: center;
+            }
+
+            .grid-student {
+                display: grid;
+                grid-template-columns: 1fr 1fr auto;
+                grid-column-gap: 1rem;
+                align-items: flex-end;
+            }
+
+            .grid-student p:not(.label) {
+                font-weight: 600;
+                border-bottom: 1px solid black;
+                padding-bottom: 0.25rem;
+                margin-bottom: 0.25rem;
+                font-size: 1.25rem;
+            }
+
+            .grid-student p.label {
+                font-size: 0.85rem;
+            }
+
+            .grid-student .age {
+                text-align: center;
+                font-variant-numeric: tabular-nums;
+            }
+
+            .grid-3 {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 1rem;
+            }
+
+            .question #title {
+                font-weight: 600;
+            }
+
+            #docs {
+                font-size: 1.15rem;
+                font-weight: 600;
+            }
+
+            .grid-2x2 {
+                display: grid;
+                grid-gap: 1rem;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .grid-2x2 > *:not(.grid-2x2) {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .underline {
+                text-decoration: underline;
+            }
+
+            .bold {
+                font-weight: 600;
+            }
+
+            .img-grid {
+                display: grid;
+                grid-template-columns: 1fr 4fr;
+                grid-gap: 1rem;
+            }
+
+            .sm {
+                font-size: 0.85rem;
+            }
+
+            hr {
+                margin: 1rem 0;
+            }
+
+            footer {
+                margin-top: auto;
+            }
+
+            footer .requirement {
+                max-width: 48ch;
+                margin-bottom: 1rem;
+            }
+
+            .link {
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+            }
+
+            .link p {
+                font-size: 1.75rem;
+            }
+
+            .link #base {
+                font-size: 2rem;
+            }
+            .link #rid {
+                font-size: 2.5rem;
+                letter-spacing: 0.15rem;
+                font-weight: 600;
+            }
+
+            img {
+                filter: grayscale(1) invert(1);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .mb {
+                margin-bottom: 1rem;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <img
+                src="https://www.hopehighonline.org/wp-content/uploads/2023/03/HHSO_High-only_logo_White-shadow-tilt-tagline-stack_vector-Shadow-1.png"
+            />
+
+            <div>
+                <p id="title">Authorization for Release of School Records</p>
+
+                <p class="sm">FROM: {{.Request.From}}</p>
+                <p class="sm">TO: {{.Request.To}}</p>
+                <p class="sm">Request began on {{.Request.StartedOn}}</p>
+            </div>
+        </header>
+
+        <div class="grid-student">
+            <div>
+                <p>{{.Request.LastName}}</p>
+                <p class="label">Last Name</p>
+            </div>
+            <div>
+                <p>{{.Request.FirstName}}</p>
+                <p class="label">First Name</p>
+            </div>
+            <div>
+                <p class="age">{{.Request.DOB}}</p>
+                <p class="label">Date of Birth</p>
+            </div>
+        </div>
+
+        <div class="grid-3" id="docs">{{.Request.Documents}}</div>
+
+        <p class="center">Please note the following:</p>
+
+        <div class="grid-2x2">
+            <div class="question">
+                <p id="title">Do your Science classes include labs?</p>
+                <div class="grid-2x2">
+                    <p>[ ] Yes</p>
+                    <p>[ ] No</p>
+                </div>
+            </div>
+            <div class="question">
+                <p id="title">Does World History include Geography?</p>
+                <div class="grid-2x2">
+                    <p>[ ] Yes</p>
+                    <p>[ ] No</p>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+        <p class="center sm">{{.State.Legalese}}</p>
+
+        <footer>
+            <p class="bold">
+                If the student has no transcript, please reply with the dates
+                attended.
+            </p>
+            <p class="requirement">
+                We require records and replies to be securely transmitted via
+                Edvizion&trade;&nbsp;Records at the following URL:
+            </p>
+
+            <div class="link">
+                <p id="base">RecReq.com</p>
+                <p>/</p>
+                <p id="rid">{{.Request.ShortID}}</p>
+            </div>
+        </footer>
+    </body>
+</html>
