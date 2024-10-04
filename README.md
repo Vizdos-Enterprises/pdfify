@@ -13,7 +13,7 @@ There is a working SDK for Golang contained here which you can `go get` and use.
 Install:
 
 ```
-go get https://github.com/Vizdos-Enterprises/pdfify
+go get github.com/Vizdos-Enterprises/pdfify
 ```
 
 ### S3 Mode
