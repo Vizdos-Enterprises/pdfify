@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -65,7 +64,6 @@ func (c GenerationEndpointHTTP) ServeHTTP(w http.ResponseWriter, r *http.Request
 	}
 
 	if internal_s3.S3Enabled {
-		fmt.Println(internal_s3.AllowedBuckets, request.Bucket)
 		if !slices.Contains(internal_s3.AllowedBuckets, request.Bucket) {
 			api.WriteResponse(w, api.APIResponseError{
 				Reason: "S3 bucket not allowed",

@@ -6,6 +6,7 @@ import (
 	"net/url"
 	"os"
 
+	"github.com/chromedp/cdproto/network"
 	"github.com/chromedp/cdproto/page"
 	"github.com/chromedp/chromedp"
 )
@@ -78,6 +79,8 @@ func Generate(htmlData []byte, output io.Writer) error {
 
 func printToPDF(urlstr string, res io.Writer) chromedp.Tasks {
 	return chromedp.Tasks{
+		network.ClearBrowserCache(),
+		network.ClearBrowserCookies(),
 		chromedp.Navigate(urlstr),
 		chromedp.ActionFunc(func(ctx context.Context) error {
 			buf, _, err := page.PrintToPDF().WithPaperHeight(11).WithPaperWidth(8.5).WithPrintBackground(false).Do(ctx)

@@ -51,7 +51,7 @@ func (s SDK) GeneratePDF(opts GenerationOptions) (*GenerationOutput, error) {
 
 	// Build request payload
 	reqBody, err := json.Marshal(map[string]interface{}{
-		"html":     opts.HTML,
+		"html":     url.QueryEscape(*opts.HTML),
 		"key":      opts.UseKey,
 		"bucket":   opts.Bucket,
 		"metadata": opts.Metadata,

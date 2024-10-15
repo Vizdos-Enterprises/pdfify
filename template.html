@@ -163,28 +163,28 @@
             <div>
                 <p id="title">Authorization for Release of School Records</p>
 
-                <p class="sm">FROM: {{.Request.From}}</p>
-                <p class="sm">TO: {{.Request.To}}</p>
-                <p class="sm">Request began on {{.Request.StartedOn}}</p>
+                <p class="sm">FROM: {{.FromSchool}}</p>
+                <p class="sm">TO: {{.ToSchool}}</p>
+                <p class="sm">Request began on {{.StartedOn}}</p>
             </div>
         </header>
 
         <div class="grid-student">
             <div>
-                <p>{{.Request.LastName}}</p>
+                <p>{{.StudentLast}}</p>
                 <p class="label">Last Name</p>
             </div>
             <div>
-                <p>{{.Request.FirstName}}</p>
+                <p>{{.StudentFirst}}</p>
                 <p class="label">First Name</p>
             </div>
             <div>
-                <p class="age">{{.Request.DOB}}</p>
+                <p class="age">{{.StudentDOB}}</p>
                 <p class="label">Date of Birth</p>
             </div>
         </div>
 
-        <div class="grid-3" id="docs">{{.Request.Documents}}</div>
+        <div class="grid-3" id="docs">{{.RequestedDocs}}</div>
 
         <p class="center">Please note the following:</p>
 
@@ -207,7 +207,7 @@
 
         <hr />
 
-        <p class="center sm">{{.State.Legalese}}</p>
+        <p class="center sm">{{.Legalese}}</p>
 
         <footer>
             <p class="bold">
@@ -222,7 +222,7 @@
             <div class="link">
                 <p id="base">RecReq.com</p>
                 <p>/</p>
-                <p id="rid">{{.Request.ShortID}}</p>
+                <p id="rid">{{.RecReqID}}</p>
             </div>
         </footer>
     </body>
